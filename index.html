@@ -47,24 +47,23 @@ body {
     }
     else if (avl[2].equals(1)) {
       let a = avl[0];
-      let o = structuredClone(avl);
+      let o = [...avl];
       let x = avl.lastIndexOf(Decimal(1));
       for (let i=0; x.gte(i); i++) {
         o[i] = a;
       }
-      tmp = structuredClone(avl);
-      tmp[1].sub(1);
-      o[x] = calculateArray(tmp);
-      o[x+1].sub(1);
+      tmp = [...avl];
+      tmp[1] = tmp[1].sub(1);
+      o[x] = [...tmp];
+      o[x+1] = o[x+1].sub(1);
       return calculateArray(o);
     }
     else {
-      o = structuredClone(avl);
-      tmp = structuredClone(avl);
-      console.log(tmp[1])
-      tmp[1].sub(1);
+      o = [...avl];
+      tmp = [...avl];
+      tmp[1] = tmp[1].sub(1);
       o[1] = calculateArray(tmp);
-      o[2].sub(1);
+      o[2] = o[2].sub(1);
       return calculateArray(o);
     }
   }
