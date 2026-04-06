@@ -39,7 +39,7 @@ body {
     else if (avl.length == 2) {
       return avl[0].pow(avl[1]);
     }
-    else if (avl.at(-1).equals(1)) {
+    else if (avl.[avl.length-1].equals(1)) {
       return calculateArray(avl.slice(0,-1));
     }
     else if (avl[1].equals(1)) {
