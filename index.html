@@ -53,17 +53,17 @@ body {
         o[i] = a;
       }
       tmp = structuredClone(avl);
-      tmp[1] = tmp[1].sub(1);
+      tmp[1].sub(1);
       o[x] = calculateArray(tmp);
-      o[x+1] = o[x+1].sub(1);
+      o[x+1].sub(1);
       return calculateArray(o);
     }
     else {
       o = structuredClone(avl);
       tmp = structuredClone(avl);
-      tmp[1] = tmp[1].sub(1);
+      tmp[1].sub(1);
       o[1] = calculateArray(tmp);
-      o[2] = o[2].sub(1);
+      o[2].sub(1);
       return calculateArray(o);
     }
   }
