@@ -59,8 +59,8 @@ body {
       return calculateArray(o);
     }
     else {
-      o = structuredClone(l);
-      tmp = structuredClone(l);
+      o = structuredClone(avl);
+      tmp = structuredClone(avl);
       tmp[1] = tmp[1].sub(1);
       o[1] = calculateArray(tmp);
       o[2] = o[2].sub(1);
