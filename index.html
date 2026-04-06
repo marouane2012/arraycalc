@@ -40,7 +40,8 @@ body {
       return avl[0].pow(avl[1]);
     }
     else if (avl[avl.length-1].equals(1)) {
-      return calculateArray(avl.slice(0,-1));
+      let tmp = avl.slice(0,-1)
+      return calculateArray(tmp);
     }
     else if (avl[1].equals(1)) {
       return avl[0];
