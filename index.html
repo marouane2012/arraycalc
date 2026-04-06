@@ -33,21 +33,24 @@ body {
   function calculateArray(entry=null) {
     let avl = JSON.parse(arr.value);
     if (entry != null) {
-      avl = [...entry]
+      avl = [...entry];
     }
     avl.forEach((value,idx) => {avl[idx] = new Decimal(value)});
     if (avl.length == 1) {
+      console.log(avl);
       return avl[0];
     }
     else if (avl.length == 2) {
+      console.log(avl);
       return avl[0].pow(avl[1]);
     }
-    else if (avl[avl.length-1].equals(1)) {
-      let tmp = avl.slice(0,-1)
-      console.log(tmp)
+    else if (avl.at(-1).equals(1)) {
+      let tmp = avl.slice(0,-1);
+      console.log(tmp);
       return calculateArray(tmp);
     }
     else if (avl[1].equals(1)) {
+      console.log(avl);
       return avl[0];
     }
     else if (avl[2].equals(1)) {
@@ -61,6 +64,7 @@ body {
       tmp[1] = tmp[1].sub(1);
       o[x] = [...tmp];
       o[x+1] = o[x+1].sub(1);
+      console.log(o);
       return calculateArray(o);
     }
     else {
@@ -69,6 +73,7 @@ body {
       tmp[1] = tmp[1].sub(1);
       o[1] = calculateArray(tmp);
       o[2] = o[2].sub(1);
+      console.log(o);
       return calculateArray(o);
     }
   }
