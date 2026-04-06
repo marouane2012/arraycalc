@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Array Notation</title>
+<style>
+.box {
+    background-color: #f1f900;
+    width: 300px;
+    height: 200px;
+    border: 8px solid black;
+    padding: 50px;
+    margin: 25px;
+}
+body {
+    font-family: "Arial", sans-serif
+}
+</style>
+</head>
+<body>
+<h1>Array Notation</h1>
+<div class="box">
+<input type="text" id="inputarray" placeholder="Array">
+<br>
+<button type="button" id="cl">Calculate</button>
+<br>
+<p id="result"></p>
+</div>
+<script src="break_eternity.js"></script>
+<script>
+  const arr = document.getElementById('inputarray');
+  const bu = document.getElementById('cl');
+  const rs = document.getElementById('result');
+  function calculateArray() {
+    let avl = JSON.parse(arr.value);
+    avl.forEach((value,idx) => {avl[idx] = new Decimal(value)});
+    if (avl.length == 1) {
+      return avl[0];
+    }
+    else if (avl.length == 2) {
+      return avl[0].pow(avl[1]);
+    }
+    else if (avl.at(-1).equals(1)) {
+      return calculateArray(avl.slice(0,-1));
+    }
+    else if (avl[1].equals(1)) {
+      return avl[0];
+    }
+    else if (avl[2].equals(1)) {
+      let a = avl[0];
+      let o = structuredClone(avl);
+      let x = avl.lastIndexOf(Decimal(1));
+      for (let i=0; x.gte(i); i++) {
+        o[i] = a;
+      }
+      tmp = structuredClone(avl);
+      tmp[1] = tmp[1].sub(1);
+      o[x] = calculateArray(tmp);
+      o[x+1] = o[x+1].sub(1);
+      return calculateArray(o);
+    }
+    else {
+      o = structuredClone(l);
+      tmp = structuredClone(l);
+      tmp[1] = tmp[1].sub(1);
+      o[1] = calculateArray(tmp);
+      o[2] = o[2].sub(1);
+      return calculateArray(o);
+    }
+  }
+  bu.addEventListener('click',calculateArray)
