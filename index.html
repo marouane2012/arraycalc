@@ -30,8 +30,11 @@ body {
   const arr = document.getElementById('inputarray');
   const bu = document.getElementById('cl');
   const rs = document.getElementById('result');
-  function calculateArray() {
+  function calculateArray(entry=null) {
     let avl = JSON.parse(arr.value);
+    if (entry != null) {
+      avl = [...entry]
+    }
     avl.forEach((value,idx) => {avl[idx] = new Decimal(value)});
     if (avl.length == 1) {
       return avl[0];
